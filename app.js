@@ -1,14 +1,13 @@
-console.log("Let's get this party started!");
-
 async function getGIFs(e) {
     e.preventDefault();
     let searchTerm = $("#search").val();
-    let response = await axios.get("http://api.giphy.com/v1/gifs/search", {params: {
-        q : searchTerm,
-        api_key : "XpnJmFyftKp552IPQFxS4efe6Tb676RV"
-    }})
-    console.log("GIF Object", response.data.data);
-    console.log("Source URL", response.data.data[1].images.fixed_height.url)
+    let response = await axios.get("http://api.giphy.com/v1/gifs/search", {
+        params: {
+            q: searchTerm,
+            api_key: "XpnJmFyftKp552IPQFxS4efe6Tb676RV"
+        }
+    });
+
     let gif1URL = response.data.data[1].images.fixed_height.url;
     let img1 = `<img src="${gif1URL}">`;
     $("#gif-container").append(img1);
